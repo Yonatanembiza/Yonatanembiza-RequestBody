@@ -23,6 +23,13 @@ public class JavalinSingleton {
         app.post("/echo", ctx -> {
             
             //implement logic here
+            String requestBody = ctx.body();
+        
+            // Convert the JSON string to a Song object
+            Song song = om.readValue(requestBody, Song.class);
+            
+            // Return the Song object as JSON in the response body
+            ctx.json(song);
                 
         });
 
@@ -36,6 +43,16 @@ public class JavalinSingleton {
         app.post("/changeartisttobeatles", ctx -> {
 
             //implement logic here
+            String requestBody = ctx.body();
+        
+            // Convert the JSON string to a Song object
+            Song song = om.readValue(requestBody, Song.class);
+            
+            // Update the artist in the Song object
+            song.setArtistName("Beatles");
+            
+            // Return the updated Song object as JSON in the response body
+            ctx.json(song);
                
         });
 
